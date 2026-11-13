@@ -1,7 +1,7 @@
 class Orbit < Formula
   desc "Run coding agents in sandboxes on OrbStack"
   homepage "https://github.com/cultofthecode/orbit"
-  # PLACEHOLDER: no orbit tag exists yet. The release workflow sets url and sha256.
+  # The orbit release workflow sets url and sha256.
   url "https://github.com/cultofthecode/orbit/archive/refs/tags/v0.0.0-placeholder.tar.gz"
   sha256 "0000000000000000000000000000000000000000000000000000000000000000"
   license "Apache-2.0"
@@ -12,7 +12,7 @@ class Orbit < Formula
   depends_on :macos
 
   def install
-    system "go", "build", *std_go_args(ldflags: "-s -w -X main.version=#{version}"), "./cmd/orbit"
+    system "go", "build", *std_go_args(ldflags: "-X main.version=#{version}"), "./cmd/orbit"
     generate_completions_from_executable(bin/"orbit", "completion")
   end
 
@@ -26,5 +26,6 @@ class Orbit < Formula
 
   test do
     assert_match "orbit version #{version}", shell_output("#{bin}/orbit --version")
+    assert_match "complete", shell_output("#{bin}/orbit completion bash")
   end
 end

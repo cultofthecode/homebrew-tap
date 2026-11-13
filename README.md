@@ -8,6 +8,8 @@ Homebrew tap of [cultofthecode](https://github.com/cultofthecode). This tap is s
 
 Requirements: a Mac with Apple Silicon, Homebrew, and [OrbStack](https://orbstack.dev) (`brew install --cask orbstack`). Homebrew does not install OrbStack for you. Apple Silicon only: Intel Macs are not supported. Orbit is not affiliated with Anthropic; each user signs in to the agent with their own account.
 
+The first Orbit release does not exist yet. Until it exists, `brew install` fails.
+
 ```sh
 brew tap cultofthecode/tap
 brew trust --formula cultofthecode/tap/orbit   # Homebrew 6+ asks to trust third-party code
