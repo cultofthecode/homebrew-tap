@@ -1,0 +1,24 @@
+name: tests
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  test-bot:
+    runs-on: macos-latest
+    timeout-minutes: 15
+    steps:
+      - name: Set up Homebrew
+        id: set-up-homebrew
+        uses: Homebrew/actions/setup-homebrew@63a2d4d8d4193eab3e62b1b782ff3ab8408f5b29 # 2026.11.09.1
+
+      - name: Check tap syntax
+        run: brew test-bot --only-tap-syntax
+
+      - name: Audit the formula
+        run: brew audit --strict cultofthecode/tap/orbit
